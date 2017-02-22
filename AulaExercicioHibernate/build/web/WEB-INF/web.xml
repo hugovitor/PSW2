@@ -4,9 +4,17 @@
         <servlet-name>SalvarOcorrencia</servlet-name>
         <servlet-class>SalvarOcorrencia</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CarregaOcorrencia</servlet-name>
+        <servlet-class>CarregaOcorrencia</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SalvarOcorrencia</servlet-name>
         <url-pattern>/SalvarOcorrencia</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CarregaOcorrencia</servlet-name>
+        <url-pattern>/CarregaOcorrencia</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
