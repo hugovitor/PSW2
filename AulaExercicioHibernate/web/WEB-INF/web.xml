@@ -8,6 +8,10 @@
         <servlet-name>CarregaOcorrencia</servlet-name>
         <servlet-class>CarregaOcorrencia</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ConsultaOcorrencia</servlet-name>
+        <servlet-class>ConsultaOcorrencia</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SalvarOcorrencia</servlet-name>
         <url-pattern>/SalvarOcorrencia</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>CarregaOcorrencia</servlet-name>
         <url-pattern>/CarregaOcorrencia</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultaOcorrencia</servlet-name>
+        <url-pattern>/ConsultaOcorrencia</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

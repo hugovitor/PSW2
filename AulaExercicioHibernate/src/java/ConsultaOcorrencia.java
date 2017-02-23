@@ -6,18 +6,20 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
- * @author ra21503801
+ * @author RA21503801
  */
-public class SalvarOcorrencia extends HttpServlet {
+public class ConsultaOcorrencia extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,43 +34,33 @@ public class SalvarOcorrencia extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            
-            Ocorrencia o1 = new Ocorrencia();
-            o1.setNome("Mariana");
-            o1.setEndereco("C.A.S");
-            o1.setTipo_ocorrencia("Transito");
-            o1.setId(01);
-            
-            Session sessao = HibernateUtil.getSessionFactory().openSession();
-            
-            Transaction tx = sessao.beginTransaction();
-            
-            sessao.save(o1);
-            sessao.flush();
-            
-            tx.commit();
-            
-            sessao.close();
-            
-            
-            
-            
-            
-            
-            
-            
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SalvarOcorrencia</title>");            
+            out.println("<title>Servlet ConsultaOcorrencia</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SalvarOcorrencia at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ConsultaOcorrencia at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-              
+            
+            Session s = HibernateUtil.getSessionFactory().openSession();
+            
+            Criteria criteria = s.createCriteria(Ocorrencia.class);
+            criteria.add(Restrictions.eq("nome", "Hugo"));
+            
+            List<Ocorrencia> result = criteria.list();
+            
+            out.println("Ocorrencias encontradas: <br/>");
+            for(Ocorrencia o: result){
+                out.println("Ocorrencia n°: " + o.getNome());
+            }   
+                
+            s.close();
+            
+            
+            
             
         }
     }

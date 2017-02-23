@@ -37,15 +37,23 @@ public class CarregaOcorrencia extends HttpServlet {
             
             Ocorrencia ocorrencia0;
             //Busar do banco...
+            
+            Ocorrencia ocorrencia;
+            
             Session sessao =HibernateUtil.getSessionFactory().openSession();
             
             ocorrencia0 = (Ocorrencia) sessao.get(Ocorrencia.class, idOcorrencia);
             
-            out.println("dados da ocorrencia0:");
-            out.println("Nome:" + ocorrencia0.getNome());
-            out.println("Endereço:" + ocorrencia0.getEndereco());
-            out.println("Tipo Ocorrencia:" + ocorrencia0.getTipo_ocorrencia());
-            out.println("Idade:" + ocorrencia0.getIdade());
+            
+            if(ocorrencia0 != null){
+                 out.println("Não encontrei o pincel de id: " + idOcorrencia);
+            }else{
+                out.println("dados da ocorrencia0:");
+                out.println("Nome:" + ocorrencia0.getNome());
+                out.println("Endereço:" + ocorrencia0.getEndereco());
+                out.println("Tipo Ocorrencia:" + ocorrencia0.getTipo_ocorrencia());
+                out.println("Idade:" + ocorrencia0.getIdade());
+            }
         }
     }
 
